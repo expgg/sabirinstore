@@ -1,0 +1,317 @@
+/* css/global.css */
+
+/* Basic Reset & Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Consider a common Bengali font or system UI fonts */
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding-top: 70px; /* Adjust if top-bar height changes, to prevent content overlap */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Top Floating Bar --- */
+#top-bar {
+    background-color: #fff; /* White background for top bar */
+    color: #333;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 60px; /* Fixed height */
+}
+
+#top-bar .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+#store-logo {
+    height: 40px; /* Adjust as needed */
+    width: auto;
+    margin-right: 10px; /* If store name is next to it */
+}
+
+#store-name-display {
+    font-size: 1.5em; /* Adjust as needed */
+    font-weight: bold;
+    color: #2c3e50; /* Darker color for store name */
+}
+
+.hamburger-menu {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger-menu img {
+    width: 30px;
+    height: 30px;
+}
+
+/* --- Main Navigation Menu (Sidebar) --- */
+#main-nav {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Start off-screen */
+    width: 280px; /* Width of the navigation sidebar */
+    height: 100%;
+    background-color: #333; /* Dark background for nav */
+    color: #fff;
+    padding-top: 20px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    z-index: 1001; /* Above top-bar but below overlay if needed for click */
+    transition: right 0.3s ease-in-out;
+    overflow-y: auto;
+}
+
+#main-nav.open {
+    right: 0; /* Slide in */
+}
+
+#main-nav .nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 15px 20px;
+    border-bottom: 1px solid #444;
+    margin-bottom: 15px;
+}
+
+#nav-menu-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#close-nav-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    filter: invert(100%); /* Make it white if using a dark icon on dark bg */
+}
+
+#main-nav ul li a {
+    display: block;
+    padding: 12px 20px;
+    color: #f1f1f1; /* Light color for nav links */
+    font-size: 1.1em;
+    border-bottom: 1px solid #444; /* Separator for nav items */
+}
+
+#main-nav ul li a:hover {
+    background-color: #555; /* Hover effect */
+    color: #fff;
+}
+
+#nav-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 1000; /* Below nav, above content */
+}
+
+#nav-overlay.active {
+    display: block;
+}
+
+
+/* --- Floating Cart Button --- */
+#floating-cart-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #27ae60; /* Green color for cart */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 999;
+    transition: background-color 0.3s;
+}
+
+#floating-cart-button:hover {
+    background-color: #2ecc71; /* Lighter green on hover */
+}
+
+#floating-cart-button img {
+    width: 30px;
+    height: 30px;
+    filter: invert(100%); /* Make icon white */
+}
+
+#cart-item-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #e74c3c; /* Red for count bubble */
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 0.8em;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+/* --- Main Content Area --- */
+main {
+    padding: 20px;
+    max-width: 1200px; /* Max width for content */
+    margin: 0 auto; /* Center content */
+    min-height: calc(100vh - 120px - 150px); /* Full height minus header and potential footer/map */
+}
+
+.home-section {
+    margin-bottom: 40px;
+    /* background-color: #fff; */
+    padding: 20px 0;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.05); */
+}
+
+.home-section h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Grid container for categories and brands */
+.grid-container {
+    display: grid;
+    /* MODIFIED: Adjusted minmax for potentially smaller items if needed, but repeat(3, 1fr) on mobile is more direct */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjusted min value slightly */
+    gap: 15px;
+}
+
+/* Basic Button Styling (can be expanded) */
+.button-primary {
+    display: inline-block;
+    background-color: #3498db; /* Primary button color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.button-primary:hover {
+    background-color: #2980b9; /* Darker on hover */
+}
+
+
+/* --- Google Maps Section --- */
+#map-section {
+    width: 100%;
+    /* height: 300px; Adjust height as needed */
+    margin-top: 30px; /* Space above map */
+    background-color: #ddd; /* Placeholder background */
+    text-align: center; /* Center iframe if its display is inline-block */
+}
+
+#map-section iframe {
+    width: 100%;
+    height: 300px; /* Default height */
+    border: none;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px; /* Adjust if top-bar height changes on mobile */
+    }
+
+    #store-name-display {
+        font-size: 1.2em;
+    }
+
+    #main-nav {
+        width: 250px; /* Slightly smaller nav for mobile */
+        right: -270px; /* Ensure it's fully off-screen */
+    }
+
+    .home-section h2 {
+        font-size: 1.5em;
+    }
+
+    .grid-container {
+         /* For tablets, you might want 3 or 4 columns depending on button size */
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Example: smaller items on tablet */
+    }
+
+     #floating-cart-button {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+    #floating-cart-button img {
+        width: 25px;
+        height: 25px;
+    }
+    #cart-item-count {
+        padding: 2px 6px;
+        font-size: 0.75em;
+    }
+
+}
+
+@media (max-width: 480px) {
+    #store-name-display {
+       display: none; /* Hide store name on very small screens if logo is enough */
+    }
+    #top-bar .logo-container {
+        flex-grow: 1; /* Allow logo to take space if name is hidden */
+    }
+     #top-bar {
+        padding: 10px 15px;
+    }
+    main {
+        padding: 15px;
+    }
+    /* MODIFIED: Ensure category buttons show 3 per line on mobile */
+    #categories-section .grid-container { /* Target specifically for categories if needed */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px; /* Adjust gap for smaller screens if needed */
+    }
+    /* If brands also need a different mobile layout, target #brands-section .grid-container */
+}

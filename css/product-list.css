@@ -1,0 +1,181 @@
+/* css/product-list.css */
+
+.page-main-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px; /* Add some padding for page content */
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+.page-header #page-title {
+    font-size: 2em;
+    color: #333;
+}
+
+#product-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive grid for products */
+    gap: 20px; /* Space between product cards */
+}
+
+/* --- Product Card Styling (from productCard.js) --- */
+.product-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures child elements conform to border radius */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.product-detail-link { /* This wraps image and name */
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Make the link a block to contain image and name properly */
+}
+
+.product-image-container {
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative;
+    background-color: #f9f9f9; /* Placeholder if image is transparent or fails to load */
+}
+
+.product-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover ensures the image fills the container, cropping if necessary */
+    /* Use 'contain' if you want to see the whole image without cropping, might leave empty space */
+}
+
+.product-info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows info to take remaining space if card heights vary */
+}
+
+.product-name { /* This is inside product-detail-link */
+    font-size: 1.1em; /* Bengali fonts might need specific sizing */
+    font-weight: 600;
+    color: #333;
+    margin: 10px 12px 0; /* Removed bottom margin to eliminate space */
+    line-height: 1.4;
+    min-height: 2.8em; /* Approx 2 lines of text to help align cards */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+}
+
+.product-price-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Pushes this to the bottom of .product-info */
+    padding-top: 0; /* Removed padding to eliminate space */
+}
+
+.product-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #27ae60; /* Green price */
+}
+
+.add-to-cart-icon-btn {
+    background-color: #27ae60;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    padding: 5px 8px;
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.add-to-cart-icon-btn:hover {
+    background-color: #2ecc71;
+}
+
+.add-to-cart-icon-btn.out-of-stock {
+    font-size: 0.8em;
+    color: #e74c3c; /* Red for out of stock text */
+    cursor: default;
+    padding: 5px 8px; /* Adjust padding if showing text */
+}
+.add-to-cart-icon-btn.out-of-stock img {
+    display: none; /* Hide icon if text "স্টক নেই" is shown */
+}
+
+.info-message {
+    text-align: center;
+    font-size: 1.1em;
+    color: #555;
+    padding: 30px 15px;
+}
+
+#fallback-content-container {
+    text-align: center;
+}
+
+/* Responsive adjustments for product list */
+@media (max-width: 768px) {
+    .page-header #page-title {
+        font-size: 1.8em;
+    }
+    #product-list-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    .product-name {
+        font-size: 1em;
+    }
+    .product-price {
+        font-size: 1.1em;
+    }
+    .add-to-cart-icon-btn img {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header #page-title {
+        font-size: 1.5em;
+    }
+    #product-list-container {
+        /* Ensure at least two items per line if they fit, or one if very narrow */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px; /* Smaller gap on mobile */
+    }
+     .product-name {
+        font-size: 0.9em;
+        min-height: 2.7em; /* Adjust for 2 lines */
+    }
+    .product-price {
+        font-size: 1em;
+    }
+    .add-to-cart-icon-btn img {
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ব্র্যান্ডের পণ্য - আমাদের গ্রোসারি</title> <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/product-list.css"> </head>
+<body>
+    <header id="top-bar">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="assets/images/logo.png" alt="লোগো" id="store-logo">
+            </a>
+        </div>
+        <h1 id="store-name-display">আমাদের গ্রোসারি</h1> <div class="hamburger-menu" id="hamburger-icon">
+            <img src="assets/icons/hamburger.svg" alt="মেনু">
+        </div>
+    </header>
+
+    <nav id="main-nav">
+        <div class="nav-header">
+            <span id="nav-menu-title">মেনু</span>
+            <img src="assets/icons/close_icon.svg" alt="বন্ধ করুন" id="close-nav-icon">
+        </div>
+        <ul>
+            <li><a href="index.html" id="nav-home">হোম</a></li>
+            <li><a href="category.html?category=all" id="nav-shop">শপ</a></li>
+            <li><a href="cart.html" id="nav-cart">কার্ট</a></li>
+            <li><a href="contact.html" id="nav-contact">যোগাযোগ</a></li>
+        </ul>
+    </nav>
+    <div id="nav-overlay"></div>
+
+    <main class="page-main-content">
+        <header class="page-header">
+            <h1 id="page-title">ব্র্যান্ডের পণ্য লোড হচ্ছে...</h1>
+        </header>
+
+        <section id="product-list-container">
+            <p id="loading-message" class="info-message">পণ্য লোড করা হচ্ছে...</p>
+        </section>
+
+        <section id="fallback-content-container" style="display: none;">
+            <p id="fallback-message" class="info-message"></p>
+            </section>
+    </main>
+
+    <section id="map-section">
+        </section>
+
+    <a href="cart.html" id="floating-cart-button">
+        <img src="assets/icons/cart_icon.svg" alt="কার্ট">
+        <span id="cart-item-count">0</span>
+    </a>
+
+    <script src="js/core/config.js"></script>
+    <script src="js/modules/localStorageHelper.js"></script>
+    <script src="js/modules/productCard.js"></script>
+    <script src="js/core/main.js"></script> <script src="js/core/brandPageController.js"></script>
+
+</body>
+</html>

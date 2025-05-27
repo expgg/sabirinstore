@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>যোগাযোগ - আমাদের গ্রোসারি</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/contact-page.css">
+    </head>
+<body>
+    <header id="top-bar">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="assets/images/logo.png" alt="লোগো" id="store-logo">
+            </a>
+        </div>
+        <h1 id="store-name-display">আমাদের গ্রোসারি</h1>
+        <div class="hamburger-menu" id="hamburger-icon">
+            <img src="assets/icons/hamburger.svg" alt="মেনু">
+        </div>
+    </header>
+
+    <nav id="main-nav">
+        <div class="nav-header">
+            <span id="nav-menu-title">মেনু</span>
+            <img src="assets/icons/close_icon.svg" alt="বন্ধ করুন" id="close-nav-icon">
+        </div>
+        <ul>
+            <li><a href="index.html" id="nav-home">হোম</a></li>
+            <li><a href="category.html?category=all" id="nav-shop">শপ</a></li>
+            <li><a href="cart.html" id="nav-cart">কার্ট</a></li>
+            <li><a href="contact.html" id="nav-contact">যোগাযোগ</a></li>
+        </ul>
+    </nav>
+    <div id="nav-overlay"></div>
+
+    <main class="page-main-content contact-page-content">
+        <header class="page-header">
+            <h1 id="contact-page-main-title">আমাদের সাথে যোগাযোগ করুন</h1>
+        </header>
+
+        <section class="contact-details-section">
+            <div class="contact-method">
+                <img src="assets/icons/whatsapp_icon.svg" alt="WhatsApp" class="contact-icon">
+                <h2 id="contact-whatsapp-title">হোয়াটসঅ্যাপ</h2>
+                <p id="contact-whatsapp-number"></p> <a href="#" id="whatsapp-direct-link" class="button-primary contact-button" target="_blank">মেসেজ পাঠান</a>
+            </div>
+
+            <div class="contact-method">
+                <h2 id="contact-email-title">ইমেইল</h2>
+                <p id="contact-email-address">info@amadergroccery.com</p> <a href="mailto:info@amadergroccery.com" id="email-direct-link" class="button-primary contact-button">ইমেইল করুন</a>
+            </div>
+
+            <div class="contact-method">
+                <h2 id="contact-address-title">দোকানের ঠিকানা</h2>
+                <p id="contact-shop-address">আমাদের দোকানটি আপনার সেবায় নিয়োজিত। গুগল ম্যাপে আমাদের অবস্থান দেখুন।</p>
+                </div>
+        </section>
+
+    </main>
+
+    <section id="map-section">
+        </section>
+
+    <a href="cart.html" id="floating-cart-button">
+        <img src="assets/icons/cart_icon.svg" alt="কার্ট">
+        <span id="cart-item-count">0</span>
+    </a>
+
+    <script src="js/core/config.js"></script>
+    <script src="js/modules/localStorageHelper.js"></script> <script src="js/core/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const config = window.APP_CONFIG; // Assuming config.js makes APP_CONFIG global
+            if (!config) {
+                console.error("Configuration (APP_CONFIG) not found.");
+                return;
+            }
+
+            const contactPageDocumentTitle = document.querySelector('title');
+            if (contactPageDocumentTitle && config.navLinks && config.storeName) {
+                contactPageDocumentTitle.textContent = `${config.navLinks.contact} - ${config.storeName}`;
+            }
+            
+            const contactPageMainTitle = document.getElementById('contact-page-main-title');
+            if (contactPageMainTitle) {
+                // You can add this text to config.js if you want it fully dynamic
+                contactPageMainTitle.textContent = "আমাদের সাথে যোগাযোগ করুন"; 
+            }
+
+            const whatsappTitle = document.getElementById('contact-whatsapp-title');
+            if (whatsappTitle) {
+                // You can add this text to config.js if you want it fully dynamic
+                whatsappTitle.textContent = "হোয়াটসঅ্যাপ";
+            }
+
+            const whatsappNumberDisplay = document.getElementById('contact-whatsapp-number');
+            if (whatsappNumberDisplay && config.whatsappNumber) {
+                whatsappNumberDisplay.textContent = config.whatsappNumber;
+            }
+
+            const whatsappDirectLink = document.getElementById('whatsapp-direct-link');
+            if (whatsappDirectLink && config.whatsappNumber) {
+                whatsappDirectLink.href = `https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent("আসসালামু আলাইকুম, আমি আপনাদের দোকান সম্পর্কে জানতে চাই।")}`;
+                // You can add this text to config.js if you want it fully dynamic
+                whatsappDirectLink.textContent = "হোয়াটসঅ্যাপে মেসেজ পাঠান";
+            }
+
+            const emailTitle = document.getElementById('contact-email-title');
+            if (emailTitle) {
+                 // You can add this text to config.js if you want it fully dynamic
+                emailTitle.textContent = "ইমেইল";
+            }
+
+            // const emailAddressDisplay = document.getElementById('contact-email-address');
+            // const emailAddress = config.contactEmail || "info@amadergroccery.com"; // Example if you add contactEmail to config
+            // if(emailAddressDisplay) emailAddressDisplay.textContent = emailAddress;
+            // const emailDirectLink = document.getElementById('email-direct-link');
+            // if(emailDirectLink) emailDirectLink.href = `mailto:${emailAddress}`;
+
+
+            const addressTitle = document.getElementById('contact-address-title');
+            if (addressTitle) {
+                // You can add this text to config.js if you want it fully dynamic
+                addressTitle.textContent = "দোকানের ঠিকানা";
+            }
+        });
+    </script>
+</body>
+</html>

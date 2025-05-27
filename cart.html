@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শপিং কার্ট - আমাদের গ্রোসারি</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/cart-page.css">
+    </head>
+<body>
+    <header id="top-bar">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="assets/images/logo.png" alt="লোগো" id="store-logo">
+            </a>
+        </div>
+        <h1 id="store-name-display">আমাদের গ্রোসারি</h1>
+        <div class="hamburger-menu" id="hamburger-icon">
+            <img src="assets/icons/hamburger.svg" alt="মেনু">
+        </div>
+    </header>
+
+    <nav id="main-nav">
+        <div class="nav-header">
+            <span id="nav-menu-title">মেনু</span>
+            <img src="assets/icons/close_icon.svg" alt="বন্ধ করুন" id="close-nav-icon">
+        </div>
+        <ul>
+            <li><a href="index.html" id="nav-home">হোম</a></li>
+            <li><a href="category.html?category=all" id="nav-shop">শপ</a></li>
+            <li><a href="cart.html" id="nav-cart">কার্ট</a></li>
+            <li><a href="contact.html" id="nav-contact">যোগাযোগ</a></li>
+        </ul>
+    </nav>
+    <div id="nav-overlay"></div>
+
+    <main class="page-main-content cart-page-content">
+        <header class="page-header">
+            <h1 id="cart-page-title">আপনার শপিং কার্ট</h1>
+        </header>
+
+        <section id="cart-items-section">
+            <p id="cart-loading-message" class="info-message">কার্ট লোড করা হচ্ছে...</p>
+            <div id="cart-empty-message" class="info-message" style="display: none;">
+                আপনার কার্ট খালি। <a href="index.html" class="button-primary">কেনাকাটা শুরু করুন</a>
+            </div>
+        </section>
+
+        <section id="cart-summary-section" style="display: none;">
+            <div class="cart-total">
+                <span id="cart-total-label">মোট:</span>
+                <span id="cart-total-amount">৳০</span>
+            </div>
+        </section>
+
+        <section id="customer-info-section" style="display: none;">
+            <h2 id="customer-info-title-display">আপনার তথ্য</h2>
+            <form id="customer-info-form">
+                <div class="form-group">
+                    <label for="customer-name" id="label-customer-name">নাম:</label>
+                    <input type="text" id="customer-name" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone" id="label-customer-phone">ফোন নম্বর:</label>
+                    <input type="tel" id="customer-phone" name="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-location" id="label-customer-location">ঠিকানা/এলাকা:</label>
+                    <input type="text" id="customer-location" name="customerLocation" required>
+                </div>
+                <button type="submit" id="order-via-whatsapp-btn" class="button-primary">
+                    </button>
+            </form>
+        </section>
+    </main>
+
+    <section id="map-section">
+        </section>
+
+    <a href="cart.html" id="floating-cart-button">
+        <img src="assets/icons/cart_icon.svg" alt="কার্ট">
+        <span id="cart-item-count">0</span>
+    </a>
+
+    <script src="js/core/config.js"></script>
+    <script src="js/modules/localStorageHelper.js"></script>
+    <script src="js/core/main.js"></script>
+    <script src="js/core/cartPageController.js"></script>
+
+</body>
+</html>
